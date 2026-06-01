@@ -9,8 +9,8 @@ export type Experience = {
 export const experiences: Experience[] = [
   {
     company: "Sprintit SRL",
-    role: "Sviluppatore Web e Designer CAD",
-    period: "2024 — Presente",
+    role: "Stage Sviluppatore Web e Designer CAD",
+    period: "2025",
     description:
       "Sviluppo di pagine web con wordpress,  gestione del design di modelli 3D per stampa e CAD.",
     url: "https://sprintit.net",

@@ -5,7 +5,7 @@ export type Skill = {
 export const skills: Skill[] = [
   { name: "Python" },
   { name: "C++" },
-  { name: "java" },
+  { name: "Java" },
   { name: "JavaScript" },
   { name: "TypeScript" },
   { name: "Next.js" },
