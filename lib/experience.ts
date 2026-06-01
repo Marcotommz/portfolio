@@ -6,21 +6,13 @@ export type Experience = {
   url?: string;
 };
 
-// TODO: inserisci qui le aziende per cui hai lavorato
 export const experiences: Experience[] = [
   {
-    company: "Nome Azienda",
-    role: "Il tuo ruolo (es. Frontend Developer)",
+    company: "Sprintit SRL",
+    role: "Sviluppatore Web e Designer CAD",
     period: "2024 — Presente",
     description:
-      "Cosa hai fatto in questa azienda: progetti, responsabilità, risultati ottenuti.",
-    url: "https://",
-  },
-  {
-    company: "Altra Azienda",
-    role: "Il tuo ruolo",
-    period: "2023 — 2024",
-    description:
-      "Breve descrizione delle tue mansioni e dei progetti su cui hai lavorato.",
+      "Sviluppo di pagine web con wordpress,  gestione del design di modelli 3D per stampa e CAD.",
+    url: "https://sprintit.net",
   },
 ];
