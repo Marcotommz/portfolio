@@ -6,6 +6,7 @@ import { GitHubIcon, InstagramIcon } from "@/components/icons";
 
 const navItems = [
   { label: "About", href: "#about" },
+  { label: "Esperienza", href: "#experience" },
   { label: "Progetti", href: "#projects" },
   { label: "Skills", href: "#skills" },
 ];

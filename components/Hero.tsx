@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { links, site } from "@/lib/config";
 import {
@@ -33,6 +34,20 @@ export default function Hero() {
         animate="show"
         className="mx-auto max-w-3xl text-center"
       >
+        <motion.div variants={item} className="mb-6 flex justify-center">
+          <div className="relative h-32 w-32 overflow-hidden rounded-full border border-white/15 bg-white/5 shadow-xl shadow-violet-900/30 ring-2 ring-accent/30 sm:h-36 sm:w-36">
+            <Image
+              src={site.avatar}
+              alt={site.name}
+              fill
+              priority
+              unoptimized
+              sizes="144px"
+              className="object-cover"
+            />
+          </div>
+        </motion.div>
+
         <motion.p
           variants={item}
           className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/70 backdrop-blur-md"

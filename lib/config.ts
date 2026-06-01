@@ -3,6 +3,8 @@ export const site = {
   role: "Developer & Student",
   bio: "Creo applicazioni web moderne e curo ogni dettaglio, dall'idea al deploy. Appassionato di codice pulito, design e nuove tecnologie.",
   email: "tommasimarco2007@gmail.com",
+  // TODO: sostituisci con la tua foto. Metti il file in /public e aggiorna il percorso (es. "/me.jpg")
+  avatar: "/avatar.svg",
 };
 
 export const links = {
