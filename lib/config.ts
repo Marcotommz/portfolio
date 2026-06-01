@@ -1,15 +1,13 @@
 export const site = {
   name: "Marco Tommasi",
   role: "Developer & Student",
-  bio: "Creo applicazioni web moderne e curo ogni dettaglio, dall'idea al deploy. Appassionato di codice pulito, design e nuove tecnologie.",
+  bio: "Studente e developer. Costruisco applicazioni web con Next.js e Node.js, e approfondisco gli algoritmi con C++ e Python. Appassionato di codice e design puliti.",
   email: "tommasimarco2007@gmail.com",
-  // TODO: sostituisci con la tua foto. Metti il file in /public e aggiorna il percorso (es. "/me.jpg")
-  avatar: "/avatar.svg",
+  avatar: "/foto_deploy.png",
 };
 
 export const links = {
   github: "https://github.com/Marcotommz",
-  // TODO: sostituisci con il tuo username Instagram reale
-  instagram: "https://instagram.com/",
+  instagram: "https://instagram.com/_marco.tommasi",
   email: `mailto:${site.email}`,
 };
