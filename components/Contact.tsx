@@ -1,4 +1,4 @@
-import { links, site } from "@/lib/config";
+import { links } from "@/lib/config";
 import Reveal from "@/components/Reveal";
 
 export default function Contact() {
@@ -14,10 +14,12 @@ export default function Contact() {
           </p>
           <div className="flex flex-wrap gap-2">
             <a
-              href={links.email}
+              href={links.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-lg bg-ink px-4 py-2.5 text-[13px] font-medium text-base transition-colors hover:bg-white"
             >
-              {site.email}
+              LinkedIn
             </a>
             <a
               href={links.github}

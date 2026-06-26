@@ -10,5 +10,6 @@ export const site = {
 export const links = {
   github: "https://github.com/Marcotommz",
   instagram: "https://instagram.com/_marco.tommasi",
+  linkedin: "https://www.linkedin.com/in/marco-tommasi-383a90413",
   email: `mailto:${site.email}`,
 };
