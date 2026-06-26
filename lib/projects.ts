@@ -9,25 +9,24 @@ export type Project = {
 // TODO: aggiungi/modifica i tuoi progetti qui
 export const projects: Project[] = [
   {
-    title: "Portfolio",
+    title: "Memorandum",
     description:
-      "Questo stesso sito: portfolio personale costruito con Next.js, Tailwind e Framer Motion.",
-    tags: ["Next.js", "TypeScript", "Tailwind"],
-    github: "https://github.com/Marcotommz/portfolio",
-    live: "#",
+      "Piattaforma web e mobile per gestione appunti e studio. Backend in PHP con PostgreSQL e microservizi AI in FastAPI per lettura, sintesi e recupero.",
+    tags: ["PHP", "PostgreSQL", "Python", "FastAPI"],
+    github: "https://github.com/Marcotommz/MEMORANDUM",
   },
   {
-    title: "PL_3d",
+    title: "PL_3D",
     description:
-      "PL_3D uno strumento Python per trasformare i file SVG dei plantari in modelli 3D pronti per stampa o CAD",
+      "Uno strumento Python per trasformare i file SVG dei plantari in modelli 3D pronti per stampa o lavorazione CAD.",
     tags: ["Python", "CADQuery"],
     github: "https://github.com/Marcotommz/PL_3D",
   },
   {
-    title: "MEMORANDUM",
+    title: "Portfolio",
     description:
-      "MEMORANDUM è una piattaforma web/mobile per gestione appunti e studio, con backend PHP e PostgreSQL, microservizi AI in FastAPI",
-    tags: ["PHP", "PostgreSQL", "Python", "FastAPI"],
-    github: "https://github.com/Marcotommz/MEMORANDUM",
+      "Questo stesso sito. Portfolio personale costruito con Next.js, TypeScript e Tailwind.",
+    tags: ["Next.js", "TypeScript", "Tailwind"],
+    github: "https://github.com/Marcotommz/portfolio",
   },
 ];

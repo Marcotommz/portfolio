@@ -1,73 +1,58 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { projects } from "@/lib/projects";
-import { ExternalIcon, GitHubIcon } from "@/components/icons";
 import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
 
 export default function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-5xl px-6 py-24">
+    <section id="work" className="mx-auto max-w-page px-6 py-16 sm:px-8">
       <SectionHeading
-        eyebrow="Portfolio"
-        title="I miei progetti"
-        description="Una selezione delle cose che ho costruito. Ogni progetto è un'occasione per imparare qualcosa di nuovo."
+        title="Selected work"
+        meta={`${String(projects.length).padStart(2, "0")} / projects`}
       />
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, i) => (
-          <motion.article
-            key={project.title}
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
-            className="group flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-colors hover:border-accent/40 hover:bg-white/[0.07]"
-          >
-            <h3 className="text-lg font-semibold text-white">
-              {project.title}
-            </h3>
-            <p className="mt-2 flex-1 text-sm leading-relaxed text-white/60">
-              {project.description}
-            </p>
+      <div className="flex flex-col gap-2">
+        {projects.map((project, i) => {
+          const href = project.github ?? project.live;
+          return (
+            <Reveal key={project.title} delay={i * 0.06}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group block rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-colors hover:border-white/[0.12] hover:bg-white/[0.04]"
+              >
+                <div className="mb-2.5 flex items-start justify-between gap-6">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-[11px] text-ink-600">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="text-base font-medium tracking-[-0.01em] text-ink">
+                      {project.title}
+                    </h3>
+                  </div>
+                  <span className="text-xs text-ink-500 transition-colors group-hover:text-ink">
+                    ↗
+                  </span>
+                </div>
 
-            <div className="mt-4 flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-xs text-accent-soft"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
+                <p className="mb-3.5 max-w-[600px] text-sm leading-[1.55] text-ink-400 [text-wrap:pretty]">
+                  {project.description}
+                </p>
 
-            <div className="mt-5 flex items-center gap-4 border-t border-white/10 pt-4">
-              {project.github ? (
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-white/70 transition-colors hover:text-white"
-                >
-                  <GitHubIcon className="h-4 w-4" />
-                  Codice
-                </a>
-              ) : null}
-              {project.live ? (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-sm text-white/70 transition-colors hover:text-white"
-                >
-                  <ExternalIcon className="h-4 w-4" />
-                  Demo
-                </a>
-              ) : null}
-            </div>
-          </motion.article>
-        ))}
+                <div className="flex flex-wrap gap-1.5">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded bg-accent/[0.08] px-2 py-[3px] font-mono text-[11px] text-accent-soft"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </a>
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );

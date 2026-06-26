@@ -1,76 +1,35 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { links, site } from "@/lib/config";
-import { GitHubIcon, InstagramIcon } from "@/components/icons";
+import { site } from "@/lib/config";
 
 const navItems = [
-  { label: "About", href: "#about" },
-  { label: "Esperienza", href: "#experience" },
-  { label: "Progetti", href: "#projects" },
-  { label: "Skills", href: "#skills" },
+  { label: "Work", href: "#work" },
+  { label: "Stack", href: "#stack" },
+  { label: "CV", href: "#cv" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 16);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <header className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4">
-      <nav
-        className={`flex w-full max-w-5xl items-center justify-between rounded-2xl border px-4 py-3 transition-all duration-300 sm:px-6 ${
-          scrolled
-            ? "border-white/10 bg-white/5 backdrop-blur-xl shadow-lg shadow-black/20"
-            : "border-transparent bg-transparent"
-        }`}
-      >
-        <a
-          href="#top"
-          className="text-sm font-semibold tracking-tight text-white sm:text-base"
-        >
-          {site.name.split(" ")[0]}
-          <span className="text-accent">.</span>
+    <header className="sticky top-0 z-50 border-b border-white/[0.05] bg-base/70 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-page items-center justify-between px-6 py-[18px] sm:px-8">
+        <a href="#top" className="flex items-center gap-2.5">
+          <span className="h-2 w-2 rounded-full bg-accent shadow-dot" />
+          <span className="text-sm font-medium tracking-[-0.01em] text-ink">
+            {site.name}
+          </span>
         </a>
 
-        <div className="hidden items-center gap-1 sm:flex">
+        <nav className="flex items-center gap-7 text-[13px] text-ink-400">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className="rounded-lg px-3 py-1.5 text-sm text-white/70 transition-colors hover:bg-white/5 hover:text-white"
+              className="transition-colors hover:text-ink"
             >
               {item.label}
             </a>
           ))}
-        </div>
-
-        <div className="flex items-center gap-1">
-          <a
-            href={links.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="rounded-lg p-2 text-white/70 transition-colors hover:bg-white/5 hover:text-white"
-          >
-            <GitHubIcon className="h-5 w-5" />
-          </a>
-          <a
-            href={links.instagram}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="rounded-lg p-2 text-white/70 transition-colors hover:bg-white/5 hover:text-white"
-          >
-            <InstagramIcon className="h-5 w-5" />
-          </a>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </header>
   );
 }

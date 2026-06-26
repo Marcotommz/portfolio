@@ -1,32 +1,27 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { skills } from "@/lib/skills";
 import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
 
 export default function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-5xl px-6 py-24">
+    <section id="stack" className="mx-auto max-w-page px-6 py-16 sm:px-8">
       <SectionHeading
-        eyebrow="Competenze"
-        title="Tech stack"
-        description="Le tecnologie e gli strumenti con cui lavoro."
+        title="Stack"
+        meta={`${String(skills.length).padStart(2, "0")} / skills`}
       />
 
-      <div className="flex flex-wrap justify-center gap-3">
-        {skills.map((skill, i) => (
-          <motion.span
-            key={skill.name}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, margin: "-40px" }}
-            transition={{ duration: 0.4, ease: "easeOut", delay: i * 0.04 }}
-            className="rounded-xl border border-white/10 bg-white/5 px-5 py-3 text-sm font-medium text-white/80 backdrop-blur-md transition-colors hover:border-accent/40 hover:text-white"
-          >
-            {skill.name}
-          </motion.span>
-        ))}
-      </div>
+      <Reveal>
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {skills.map((skill) => (
+            <div
+              key={skill.name}
+              className="rounded-lg border border-white/[0.06] bg-white/[0.02] px-4 py-3.5 text-[13px] text-ink-200 transition-colors hover:border-white/[0.12] hover:bg-white/[0.04]"
+            >
+              {skill.name}
+            </div>
+          ))}
+        </div>
+      </Reveal>
     </section>
   );
 }

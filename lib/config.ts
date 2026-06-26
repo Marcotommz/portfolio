@@ -2,6 +2,7 @@ export const site = {
   name: "Marco Tommasi",
   role: "Developer & Student",
   bio: "Studente e developer. Costruisco applicazioni web con Next.js e Node.js, e approfondisco gli algoritmi con C++ e Python. Appassionato di codice e design puliti.",
+  availability: "Available for work",
   email: "tommasimarco2007@gmail.com",
   avatar: "/foto_deploy.png",
 };

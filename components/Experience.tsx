@@ -1,59 +1,48 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { experiences } from "@/lib/experience";
-import { ExternalIcon } from "@/components/icons";
 import SectionHeading from "@/components/SectionHeading";
+import Reveal from "@/components/Reveal";
 
 export default function Experience() {
   return (
-    <section id="experience" className="mx-auto max-w-3xl px-6 py-24">
+    <section id="cv" className="mx-auto max-w-page px-6 py-16 sm:px-8">
       <SectionHeading
-        eyebrow="Carriera"
-        title="Esperienza"
-        description="Le aziende e i team con cui ho collaborato."
+        title="Experience"
+        meta={`${String(experiences.length).padStart(2, "0")} / role`}
       />
 
-      <div className="relative space-y-8 before:absolute before:left-2 before:top-2 before:h-full before:w-px before:bg-white/10 sm:before:left-[7px]">
-        {experiences.map((exp, i) => (
-          <motion.div
-            key={`${exp.company}-${i}`}
-            initial={{ opacity: 0, x: -16 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
-            className="relative pl-10"
-          >
-            <span className="absolute left-0 top-1.5 h-4 w-4 rounded-full border-2 border-accent bg-slate-950" />
-
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md transition-colors hover:border-accent/40 hover:bg-white/[0.07]">
-              <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
-                <h3 className="flex items-center gap-2 text-lg font-semibold text-white">
-                  {exp.url ? (
-                    <a
-                      href={exp.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 transition-colors hover:text-accent-soft"
-                    >
+      <div className="flex flex-col gap-2">
+        {experiences.map((exp, i) => {
+          const Wrapper = exp.url ? "a" : "div";
+          return (
+            <Reveal key={`${exp.company}-${i}`} delay={i * 0.06}>
+              <Wrapper
+                {...(exp.url
+                  ? {
+                      href: exp.url,
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    }
+                  : {})}
+                className="block rounded-xl border border-white/[0.06] bg-white/[0.02] p-6 transition-colors hover:border-white/[0.12] hover:bg-white/[0.04]"
+              >
+                <div className="flex items-start justify-between gap-6">
+                  <div>
+                    <h3 className="mb-1 text-base font-medium tracking-[-0.01em] text-ink">
                       {exp.company}
-                      <ExternalIcon className="h-3.5 w-3.5" />
-                    </a>
-                  ) : (
-                    exp.company
-                  )}
-                </h3>
-                <span className="text-sm text-white/50">{exp.period}</span>
-              </div>
-              <p className="mt-0.5 text-sm font-medium text-accent-soft">
-                {exp.role}
-              </p>
-              <p className="mt-3 text-sm leading-relaxed text-white/60">
-                {exp.description}
-              </p>
-            </div>
-          </motion.div>
-        ))}
+                    </h3>
+                    <p className="text-[13px] text-ink-400">{exp.role}</p>
+                  </div>
+                  <span className="whitespace-nowrap font-mono text-[11px] text-ink-500">
+                    {exp.period}
+                  </span>
+                </div>
+                <p className="mt-3.5 max-w-[600px] text-sm leading-[1.55] text-ink-400 [text-wrap:pretty]">
+                  {exp.description}
+                </p>
+              </Wrapper>
+            </Reveal>
+          );
+        })}
       </div>
     </section>
   );

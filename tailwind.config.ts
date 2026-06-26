@@ -9,28 +9,42 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        accent: {
-          DEFAULT: "#a78bfa",
-          soft: "#c4b5fd",
+        // Near-black navy canvas
+        base: "#070a14",
+        surface: "#11162a",
+        // Cool ink scale (light → dim) for text on the dark canvas
+        ink: {
+          DEFAULT: "#e8eaf0", // primary text
+          200: "#c9cee0", // emphasised body
+          400: "#8a93b0", // secondary text
+          500: "#6b7290", // tertiary text
+          600: "#4a5170", // mono / faint labels
         },
+        // Periwinkle accent
+        accent: {
+          DEFAULT: "#6b8aff", // dot / glow
+          soft: "#9ab0e8", // tag text
+        },
+        online: "#4ade80",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
       },
-      animation: {
-        "blob": "blob 18s infinite ease-in-out",
-        "fade-in": "fadeIn 0.8s ease-out forwards",
+      maxWidth: {
+        page: "880px",
+      },
+      boxShadow: {
+        dot: "0 0 12px rgba(107, 138, 255, 0.6)",
       },
       keyframes: {
-        blob: {
-          "0%, 100%": { transform: "translate(0px, 0px) scale(1)" },
-          "33%": { transform: "translate(40px, -50px) scale(1.1)" },
-          "66%": { transform: "translate(-30px, 30px) scale(0.95)" },
-        },
-        fadeIn: {
+        rise: {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+      },
+      animation: {
+        rise: "rise 0.6s ease-out forwards",
       },
     },
   },
