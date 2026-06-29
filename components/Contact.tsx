@@ -1,44 +1,67 @@
-import { links } from "@/lib/config";
-import Reveal from "@/components/Reveal";
+import { links, site } from "@/lib/config";
+import Reveal, { DrawLine } from "@/components/Reveal";
+import SectionHeading from "@/components/SectionHeading";
+import {
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  MailIcon,
+} from "@/components/icons";
+
+const socials = [
+  { href: links.github, label: "GitHub", Icon: GitHubIcon },
+  { href: links.linkedin, label: "LinkedIn", Icon: LinkedInIcon },
+  { href: links.instagram, label: "Instagram", Icon: InstagramIcon },
+  { href: links.email, label: "Email", Icon: MailIcon },
+];
 
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-page px-6 py-16 pb-24 sm:px-8">
-      <Reveal>
-        <div className="rounded-xl border border-white/[0.06] bg-gradient-to-b from-accent/[0.04] to-accent/[0.01] p-8">
-          <h2 className="mb-3 text-[13px] font-medium tracking-[0.02em] text-ink-400">
-            Contact
-          </h2>
-          <p className="mb-5 max-w-[520px] text-lg leading-[1.5] tracking-[-0.01em] text-ink [text-wrap:pretty]">
-            Stai cercando uno sviluppatore? Scrivimi — rispondo entro 24 ore.
-          </p>
-          <div className="flex flex-wrap gap-2">
-            <a
-              href={links.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg bg-ink px-4 py-2.5 text-[13px] font-medium text-base transition-colors hover:bg-white"
-            >
-              LinkedIn
-            </a>
-            <a
-              href={links.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-2.5 text-[13px] font-medium text-ink transition-colors hover:bg-white/[0.07]"
-            >
-              GitHub
-            </a>
-            <a
-              href={links.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-lg border border-white/[0.08] bg-white/[0.04] px-4 py-2.5 text-[13px] font-medium text-ink transition-colors hover:bg-white/[0.07]"
-            >
-              Instagram
-            </a>
-          </div>
-        </div>
+    <section
+      id="contact"
+      className="relative box-border px-[7vw] pb-[60px] pt-[120px] text-center"
+    >
+      <Reveal className="mb-12 inline-block">
+        <SectionHeading size="clamp(28px,4.4vw,56px)">CONTATTAMI</SectionHeading>
+      </Reveal>
+
+      <Reveal className="flex flex-wrap items-center justify-center gap-7">
+        {socials.map(({ href, label, Icon }) => (
+          <a
+            key={label}
+            href={href}
+            aria-label={label}
+            target={href.startsWith("mailto:") ? undefined : "_blank"}
+            rel="noopener noreferrer"
+            className="inline-flex text-[#f0f0f0] transition-all duration-200 hover:-translate-y-1 hover:text-accent"
+          >
+            <Icon className="h-7 w-7" />
+          </a>
+        ))}
+      </Reveal>
+
+      <DrawLine
+        duration={1}
+        className="mx-auto mt-8 h-[150px] w-0.5 bg-accent"
+        style={{ boxShadow: "0 0 12px var(--glow)" }}
+      />
+
+      <Reveal
+        className="mx-auto w-[340px] max-w-[82%] px-5 pb-4 pt-[18px]"
+        style={{
+          borderLeft: "1px solid var(--soft)",
+          borderRight: "1px solid var(--soft)",
+          borderBottom: "1px solid var(--soft)",
+          boxShadow: "0 0 18px var(--faint)",
+        }}
+      >
+        <span className="text-[13px] text-[#9a9a9a]">
+          Copyright © 2026{" "}
+          <span className="font-display text-[13px] text-accent">
+            {site.name}
+          </span>
+          . Tutti i diritti riservati.
+        </span>
       </Reveal>
     </section>
   );

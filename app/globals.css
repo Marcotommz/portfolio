@@ -2,35 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --accent: #2bb3ff;
+  --glow: rgba(43, 179, 255, 0.7);
+  --soft: rgba(43, 179, 255, 0.5);
+  --faint: rgba(43, 179, 255, 0.12);
+}
+
 html {
   scroll-behavior: smooth;
-  background: #070a14;
+  background: #000;
 }
 
 body {
   @apply bg-base text-ink antialiased;
-  font-feature-settings: "ss01", "ss02";
+  overflow-x: hidden;
 }
 
-/* Selection — muted periwinkle */
 ::selection {
-  background: #2a3658;
-  color: #e8eaf0;
+  background: rgba(43, 179, 255, 0.35);
 }
 
-/* Custom scrollbar — dark track, faint accent thumb */
+/* Custom scrollbar — black track, faint accent thumb */
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #070a14;
+  background: #000;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(107, 138, 255, 0.22);
+  background: rgba(43, 179, 255, 0.25);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(107, 138, 255, 0.4);
+  background: rgba(43, 179, 255, 0.45);
 }
 
 /* Respect users who prefer reduced motion */

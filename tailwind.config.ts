@@ -9,42 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Near-black navy canvas
-        base: "#070a14",
-        surface: "#11162a",
-        // Cool ink scale (light → dim) for text on the dark canvas
-        ink: {
-          DEFAULT: "#e8eaf0", // primary text
-          200: "#c9cee0", // emphasised body
-          400: "#8a93b0", // secondary text
-          500: "#6b7290", // tertiary text
-          600: "#4a5170", // mono / faint labels
-        },
-        // Periwinkle accent
+        base: "#000000",
+        ink: "#e9e9e9",
         accent: {
-          DEFAULT: "#6b8aff", // dot / glow
-          soft: "#9ab0e8", // tag text
+          DEFAULT: "#2bb3ff",
         },
-        online: "#4ade80",
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
-      },
-      maxWidth: {
-        page: "880px",
-      },
-      boxShadow: {
-        dot: "0 0 12px rgba(107, 138, 255, 0.6)",
+        sans: ["var(--font-poppins)", "system-ui", "sans-serif"],
+        display: ["var(--font-monoton)", "cursive"],
+        grotesk: ["var(--font-grotesk)", "system-ui", "sans-serif"],
       },
       keyframes: {
-        rise: {
-          "0%": { opacity: "0", transform: "translateY(12px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        blink: {
+          "0%, 49%": { opacity: "1" },
+          "50%, 100%": { opacity: "0" },
+        },
+        arrow: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(10px)" },
         },
       },
       animation: {
-        rise: "rise 0.6s ease-out forwards",
+        blink: "blink 1.05s steps(1) infinite",
+        arrow: "arrow 1.8s ease-in-out infinite",
       },
     },
   },

@@ -1,25 +1,75 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { ReactNode } from "react";
+import { motion, type Variants } from "framer-motion";
+import type { CSSProperties, ReactNode } from "react";
 
-type Props = {
-  children: ReactNode;
-  delay?: number;
-  className?: string;
+type Direction = "up" | "left" | "right" | "scale";
+
+const variants: Record<Direction, Variants> = {
+  up: { hidden: { opacity: 0, y: 28 }, show: { opacity: 1, y: 0 } },
+  left: { hidden: { opacity: 0, x: -40 }, show: { opacity: 1, x: 0 } },
+  right: { hidden: { opacity: 0, x: 40 }, show: { opacity: 1, x: 0 } },
+  scale: { hidden: { opacity: 0, scale: 0.7 }, show: { opacity: 1, scale: 1 } },
 };
 
-/** Calm, uniform fade-up used across sections. */
-export default function Reveal({ children, delay = 0, className }: Props) {
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+type RevealProps = {
+  children: ReactNode;
+  dir?: Direction;
+  delay?: number;
+  duration?: number;
+  className?: string;
+  style?: CSSProperties;
+};
+
+/** Scroll-triggered reveal used across the page. */
+export default function Reveal({
+  children,
+  dir = "up",
+  delay = 0,
+  duration = 0.8,
+  className,
+  style,
+}: RevealProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, ease: "easeOut", delay }}
+      variants={variants[dir]}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-8% 0px" }}
+      transition={{ duration, ease: EASE, delay }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>
+  );
+}
+
+type DrawLineProps = {
+  axis?: "x" | "y";
+  className?: string;
+  style?: CSSProperties;
+  duration?: number;
+};
+
+/** A glowing accent line that draws itself in when scrolled into view. */
+export function DrawLine({
+  axis = "y",
+  className,
+  style,
+  duration = 1.4,
+}: DrawLineProps) {
+  const isY = axis === "y";
+  return (
+    <motion.div
+      initial={{ scaleX: isY ? 1 : 0, scaleY: isY ? 0 : 1 }}
+      whileInView={{ scaleX: 1, scaleY: 1 }}
+      viewport={{ once: true, margin: "-8% 0px" }}
+      transition={{ duration, ease: EASE }}
+      className={className}
+      style={{ transformOrigin: isY ? "top" : "left", ...style }}
+    />
   );
 }
