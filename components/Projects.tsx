@@ -1,5 +1,5 @@
 import { projects } from "@/lib/projects";
-import Reveal from "@/components/Reveal";
+import Reveal, { DrawLine } from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 
 const PREVIEWS = [
@@ -15,6 +15,21 @@ export default function Projects() {
       id="work"
       className="relative box-border px-[7vw] py-[120px] text-center"
     >
+      {/* Bridge from the left-aligned Skills timeline: horizontal across, then
+          straight down onto the centered PROGETTI heading. */}
+      <DrawLine
+        axis="x"
+        duration={0.9}
+        className="absolute top-[-170px] left-[calc(7vw+34px)] h-0.5 w-[calc(50%-7vw-34px)] bg-accent"
+        style={{ boxShadow: "0 0 12px var(--glow)" }}
+      />
+      <DrawLine
+        duration={1}
+        delay={0.6}
+        className="absolute top-[-170px] left-[calc(50%-1px)] h-[290px] w-0.5 bg-accent"
+        style={{ boxShadow: "0 0 14px var(--glow)" }}
+      />
+
       <Reveal className="mb-12">
         <SectionHeading>PROGETTI</SectionHeading>
       </Reveal>

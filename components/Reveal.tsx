@@ -37,7 +37,7 @@ export default function Reveal({
       variants={variants[dir]}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-8% 0px" }}
+      viewport={{ once: false, margin: "-8% 0px" }}
       transition={{ duration, ease: EASE, delay }}
       className={className}
       style={style}
@@ -52,6 +52,7 @@ type DrawLineProps = {
   className?: string;
   style?: CSSProperties;
   duration?: number;
+  delay?: number;
 };
 
 /** A glowing accent line that draws itself in when scrolled into view. */
@@ -60,14 +61,15 @@ export function DrawLine({
   className,
   style,
   duration = 1.4,
+  delay = 0,
 }: DrawLineProps) {
   const isY = axis === "y";
   return (
     <motion.div
       initial={{ scaleX: isY ? 1 : 0, scaleY: isY ? 0 : 1 }}
       whileInView={{ scaleX: 1, scaleY: 1 }}
-      viewport={{ once: true, margin: "-8% 0px" }}
-      transition={{ duration, ease: EASE }}
+      viewport={{ once: false, margin: "-8% 0px" }}
+      transition={{ duration, ease: EASE, delay }}
       className={className}
       style={{ transformOrigin: isY ? "top" : "left", ...style }}
     />

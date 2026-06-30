@@ -42,27 +42,38 @@ export default function Skills() {
                 boxShadow: "0 0 22px var(--faint)",
               }}
             >
-              {group.items.map((tech) => (
-                <div
-                  key={tech.name}
-                  title={tech.name}
-                  className="flex h-[58px] w-[58px] items-center justify-center rounded-[9px] bg-[#0c0c0c]"
-                  style={{ border: "1px solid var(--faint)" }}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={techIcon(tech.icon)}
-                    alt={tech.name}
-                    loading="lazy"
-                    className="h-[34px] w-[34px] object-contain"
-                    style={
-                      tech.invert
-                        ? { filter: "invert(1) brightness(1.4)" }
-                        : undefined
-                    }
-                  />
-                </div>
-              ))}
+              {group.items.map((tech) => {
+                const Tag = tech.url ? "a" : "div";
+                return (
+                  <Tag
+                    key={tech.name}
+                    title={tech.name}
+                    {...(tech.url
+                      ? {
+                          href: tech.url,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          "aria-label": tech.name,
+                        }
+                      : {})}
+                    className="flex h-[58px] w-[58px] items-center justify-center rounded-[9px] bg-[#0c0c0c] transition-transform duration-200 hover:scale-110 hover:border-accent"
+                    style={{ border: "1px solid var(--faint)" }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={techIcon(tech.icon)}
+                      alt={tech.name}
+                      loading="lazy"
+                      className="h-[34px] w-[34px] object-contain"
+                      style={
+                        tech.invert
+                          ? { filter: "invert(1) brightness(1.4)" }
+                          : undefined
+                      }
+                    />
+                  </Tag>
+                );
+              })}
             </Reveal>
           </div>
         ))}
