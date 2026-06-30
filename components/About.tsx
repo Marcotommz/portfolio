@@ -49,7 +49,7 @@ export default function About() {
           {about.map((paragraph, i) => (
             <p
               key={i}
-              className="mb-5 text-base leading-[1.8] text-[#c2c2c2] last:mb-0"
+              className="mb-5 text-[16px] leading-[1.8] text-ink last:mb-0"
             >
               <RichText text={paragraph} />
             </p>

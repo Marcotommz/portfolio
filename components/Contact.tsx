@@ -21,6 +21,11 @@ export default function Contact() {
       id="contact"
       className="relative box-border px-[7vw] pb-[60px] pt-[120px] text-center"
     >
+      <DrawLine
+        className="absolute left-[calc(50%-1px)] top-[-120px] h-[240px] w-0.5 bg-accent"
+        style={{ boxShadow: "0 0 14px var(--glow)" }}
+      />
+
       <Reveal className="mb-12 inline-block">
         <SectionHeading size="clamp(28px,4.4vw,56px)">CONTATTAMI</SectionHeading>
       </Reveal>

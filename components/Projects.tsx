@@ -11,16 +11,19 @@ const PREVIEWS = [
 
 export default function Projects() {
   return (
-    <section id="work" className="relative box-border px-[7vw] py-[120px]">
+    <section
+      id="work"
+      className="relative box-border px-[7vw] py-[120px] text-center"
+    >
       <Reveal className="mb-12">
         <SectionHeading>PROGETTI</SectionHeading>
       </Reveal>
 
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col items-center gap-10">
         {projects.map((project, i) => (
           <Reveal
             key={project.title}
-            className="relative max-w-[920px] overflow-hidden rounded-xl"
+            className="relative w-full max-w-[920px] overflow-hidden rounded-xl text-left"
             style={{
               border: "1px solid var(--soft)",
               boxShadow: "0 0 34px var(--faint)",
